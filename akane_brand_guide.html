@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Akane Pro — Visual Identity & Brand Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --crimson:   #A3202B;
+    --deep-red:  #6F0E19;
+    --near-black:#0B0C0A;
+    --cream:     #F5F1EC;
+    --emerald:   #17BD7F;
+    --charcoal:  #1A1A24;
+    --soft-gray: #2A2A35;
+    --light-gray:#E8E4DF;
+    --gold:      #D4A843;
+    --gold-light:#F0C85A;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--near-black);
+    color: var(--cream);
+    font-family: 'Cairo', 'Inter', sans-serif;
+    direction: rtl;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    body { background: white; color: #111; }
+    .page { page-break-after: always; box-shadow: none; }
+    .no-print { display:none; }
+  }
+
+  /* ─── SHARED ─── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 32px;
+    position: relative;
+    overflow: hidden;
+    background: var(--near-black);
+    box-shadow: 0 20px 80px rgba(0,0,0,.7);
+  }
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 8px;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--crimson), transparent);
+    margin: 24px 0;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid var(--crimson);
+    border-radius: 20px;
+    font-size: 10px;
+    color: var(--crimson);
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+    margin: 3px;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 1 — COVER
+  ══════════════════════════════════════════ */
+  .cover {
+    background: linear-gradient(160deg, #0B0C0A 0%, #1A0508 50%, #0B0C0A 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .cover-top-bar {
+    height: 5px;
+    background: linear-gradient(90deg, var(--crimson), var(--deep-red), var(--gold));
+  }
+
+  .cover-inner {
+    display: flex;
+    flex: 1;
+    padding: 50px 60px;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .cover-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cover-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .cover-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .cover-logo span {
+    color: var(--crimson);
+  }
+
+  .cover-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+  }
+
+  .cover-tagline-ar {
+    font-family: 'Cairo', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: .85;
+    margin-bottom: 8px;
+    direction: rtl;
+  }
+
+  .cover-tagline-en {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--cream);
+    opacity: .5;
+    letter-spacing: 2px;
+  }
+
+  .cover-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  .cover-badge {
+    padding: 6px 14px;
+    border: 1px solid rgba(163,32,43,.5);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: rgba(245,241,236,.7);
+  }
+
+  .cover-right {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .cover-char-frame {
+    width: 180px;
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--crimson);
+    box-shadow: 0 0 60px rgba(163,32,43,.5), 0 0 120px rgba(163,32,43,.2);
+    position: relative;
+  }
+
+  .cover-char-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .cover-char-glow {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 20px;
+    background: var(--crimson);
+    filter: blur(20px);
+    opacity: .6;
+  }
+
+  .cover-bottom {
+    padding: 20px 60px;
+    border-top: 1px solid rgba(163,32,43,.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cover-bottom-left {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(245,241,236,.4);
+    letter-spacing: 2px;
+  }
+
+  .cover-bottom-right {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--crimson);
+    letter-spacing: 2px;
+  }
+
+  .cover-side-text {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: rgba(245,241,236,.2);
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 2 — BRAND IDENTITY
+  ══════════════════════════════════════════ */
+  .inner-page {
+    padding: 50px 60px;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+  .page-num {
+    font-family: 'Cinzel', serif;
+    font-size: 60px;
+    font-weight: 900;
+    color: rgba(163,32,43,.15);
+    line-height: 1;
+  }
+
+  .page-title-block h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--cream);
+  }
+
+  .page-title-block p {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--crimson);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* Identity cards */
+  .identity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .identity-card {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(163,32,43,.2);
+    border-radius: 10px;
+    padding: 24px;
+  }
+
+  .identity-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+
+  .identity-card p, .identity-card li {
+    font-family: 'Cairo', sans-serif;
+    font-size: 13px;
+    color: rgba(245,241,236,.8);
+    line-height: 1.8;
+  }
+
+  .identity-card ul { padding-right: 16px; }
+
+  .identity-card-wide {
+    grid-column: span 2;
+  }
+
+  .persona-quote {
+    background: linear-gradient(135deg, rgba(163,32,43,.15), rgba(111,14,25,.1));
+    border-right: 3px solid var(--crimson);
+    padding: 20px 24px;
+    border-radius: 0 10px 10px 0;
+    margin-top: 16px;
+    direction: ltr;
+    text-align: left;
+  }
+
+  .persona-quote p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--cream);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 3 — COLOR SYSTEM
+  ══════════════════════════════════════════ */
+  .color-hero {
+    display: flex;
+    gap: 0;
+    height: 80px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+
+  .color-hero-seg {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 8px 12px;
+  }
+
+  .color-hero-seg span {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    color: rgba(255,255,255,.7);
+    letter-spacing: 1px;
+  }
+
+  .colors-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .color-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  .color-swatch {
+    height: 100px;
+    width: 100%;
+  }
+
+  .color-info {
+    background: rgba(255,255,255,.04);
+    padding: 12px;
+  }
+
+  .color-info .color-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .color-info .color-hex {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(245,241,236,.5);
+    margin-bottom: 4px;
+  }
+
+  .color-info .color-use {
+    font-family: 'Cairo', sans-serif;
+    font-size: 10px;
+    color: rgba(245,241,236,.6);
+  }
+
+  .color-usage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .color-usage-card {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .color-usage-card h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .color-usage-card p {
+    font-family: 'Cairo', sans-serif;
+    font-size: 12px;
+    color: rgba(245,241,236,.7);
+    line-height: 1.7;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 4 — TYPOGRAPHY
+  ══════════════════════════════════════════ */
+  .type-showcase {
+    margin-bottom: 24px;
+    padding: 24px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px;
+  }
+
+  .type-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--crimson);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .type-sample-cinzel {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+
+  .type-sample-cairo {
+    font-family: 'Cairo', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.4;
+    direction: rtl;
+  }
+
+  .type-sample-inter {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: rgba(245,241,236,.8);
+    line-height: 1.8;
+    direction: ltr;
+    text-align: left;
+  }
+
+  .type-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .type-scale-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+
+  .type-scale-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--crimson);
+    width: 60px;
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 5 — CHARACTER DESIGN
+  ══════════════════════════════════════════ */
+  .char-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .char-frame {
+    width: 220px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .char-img-container {
+    width: 220px;
+    height: 390px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--crimson);
+    box-shadow: 0 0 40px rgba(163,32,43,.4);
+    position: relative;
+  }
+
+  .char-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .char-img-label {
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(245,241,236,.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .char-details {
+    flex: 1;
+  }
+
+  .char-attr {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+
+  .char-attr-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(163,32,43,.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .char-attr-content h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--gold);
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .char-attr-content p {
+    font-family: 'Cairo', sans-serif;
+    font-size: 13px;
+    color: rgba(245,241,236,.8);
+    line-height: 1.6;
+  }
+
+  /* Color dots for hair/eyes */
+  .color-dot-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+
+  .color-dot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(245,241,236,.6);
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.2);
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 6 — UI COMPONENTS
+  ══════════════════════════════════════════ */
+  .ui-overview {
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .ui-overview-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+
+  /* Mock UI layout */
+  .mock-app {
+    background: #0B0C0A;
+    border: 1px solid rgba(163,32,43,.3);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    height: 200px;
+  }
+
+  .mock-sidebar {
+    width: 50px;
+    background: #12121A;
+    border-left: 1px solid rgba(255,255,255,.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+    gap: 16px;
+  }
+
+  .mock-nav-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(163,32,43,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  .mock-nav-dot.active {
+    background: var(--crimson);
+  }
+
+  .mock-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mock-avatar-area {
+    flex: 1;
+    background: linear-gradient(180deg, #0B0C0A 0%, #1A0508 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .mock-avatar-placeholder {
+    width: 70px;
+    height: 120px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(163,32,43,.3), rgba(26,5,8,.5));
+    border: 1px solid rgba(163,32,43,.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  .mock-mode-pill {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0,0,0,.7);
+    border: 1px solid rgba(163,32,43,.5);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    color: var(--crimson);
+  }
+
+  .mock-bottom-bar {
+    height: 46px;
+    background: rgba(255,255,255,.03);
+    border-top: 1px solid rgba(255,255,255,.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 16px;
+  }
+
+  .mock-mic-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--crimson);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    box-shadow: 0 0 15px rgba(163,32,43,.5);
+  }
+
+  .mock-input {
+    flex: 1;
+    height: 28px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 20px;
+  }
+
+  .mock-activity {
+    width: 90px;
+    background: rgba(255,255,255,.03);
+    border-right: 1px solid rgba(255,255,255,.06);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mock-activity-item {
+    height: 20px;
+    background: rgba(163,32,43,.2);
+    border-radius: 4px;
+    border: 1px solid rgba(163,32,43,.3);
+  }
+
+  /* Components grid */
+  .components-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .component-card {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .component-card h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .component-card p {
+    font-family: 'Cairo', sans-serif;
+    font-size: 12px;
+    color: rgba(245,241,236,.7);
+    line-height: 1.7;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 7 — VIDEO EMOTION SYSTEM
+  ══════════════════════════════════════════ */
+  .emotions-intro {
+    background: linear-gradient(135deg, rgba(163,32,43,.12), rgba(111,14,25,.08));
+    border: 1px solid rgba(163,32,43,.2);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+
+  .emotions-intro p {
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    color: rgba(245,241,236,.85);
+    line-height: 1.8;
+  }
+
+  .emotions-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .emotion-cat {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  .emotion-cat h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--crimson);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(163,32,43,.2);
+  }
+
+  .emotion-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .emotion-tag {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(245,241,236,.7);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .emotion-tag .emoji { font-size: 11px; }
+
+  .clip-logic {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .clip-logic h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .logic-flow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .logic-step {
+    background: rgba(163,32,43,.15);
+    border: 1px solid rgba(163,32,43,.3);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--cream);
+  }
+
+  .logic-arrow {
+    color: var(--crimson);
+    font-size: 16px;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 8 — TECH ARCHITECTURE
+  ══════════════════════════════════════════ */
+  .tech-stack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .tech-layer {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .tech-layer h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(212,168,67,.2);
+  }
+
+  .tech-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+  }
+
+  .tech-item:last-child { border-bottom: none; }
+
+  .tech-item-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--crimson);
+    min-width: 110px;
+    flex-shrink: 0;
+  }
+
+  .tech-item-desc {
+    font-family: 'Cairo', sans-serif;
+    font-size: 11px;
+    color: rgba(245,241,236,.65);
+    line-height: 1.5;
+  }
+
+  .arch-diagram {
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .arch-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  .arch-box {
+    flex: 1;
+    background: rgba(163,32,43,.12);
+    border: 1px solid rgba(163,32,43,.3);
+    border-radius: 8px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+
+  .arch-box.gold-box {
+    background: rgba(212,168,67,.1);
+    border-color: rgba(212,168,67,.3);
+  }
+
+  .arch-box.green-box {
+    background: rgba(23,189,127,.1);
+    border-color: rgba(23,189,127,.3);
+  }
+
+  .arch-box h5 {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 2px;
+  }
+
+  .arch-box p {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    color: rgba(245,241,236,.5);
+  }
+
+  .arch-connector {
+    color: rgba(163,32,43,.6);
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 9 — FEATURES & MODES
+  ══════════════════════════════════════════ */
+  .modes-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .mode-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid rgba(163,32,43,.3);
+  }
+
+  .mode-card-header {
+    background: linear-gradient(135deg, var(--crimson), var(--deep-red));
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mode-card-header.alt {
+    background: linear-gradient(135deg, #1A2A3A, #0D1A28);
+    border-bottom: 1px solid rgba(23,189,127,.3);
+  }
+
+  .mode-card-header h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    color: white;
+  }
+
+  .mode-card-header .mode-icon { font-size: 20px; }
+
+  .mode-card-body {
+    background: rgba(255,255,255,.03);
+    padding: 16px 20px;
+  }
+
+  .mode-feature {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 6px 0;
+    font-family: 'Cairo', sans-serif;
+    font-size: 12px;
+    color: rgba(245,241,236,.8);
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+
+  .mode-feature:last-child { border-bottom: none; }
+
+  .mode-feature .check { color: var(--emerald); font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .feature-pill {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .feature-pill .feat-icon { font-size: 22px; margin-bottom: 8px; }
+
+  .feature-pill h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .feature-pill p {
+    font-family: 'Cairo', sans-serif;
+    font-size: 11px;
+    color: rgba(245,241,236,.55);
+    line-height: 1.5;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 10 — FILE ARCHITECTURE
+  ══════════════════════════════════════════ */
+  .file-tree {
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    direction: ltr;
+    text-align: left;
+  }
+
+  .tree-item {
+    padding: 3px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .tree-indent { width: 18px; flex-shrink: 0; }
+  .tree-icon { flex-shrink: 0; }
+
+  .tree-name {
+    font-weight: 600;
+    color: var(--cream);
+  }
+
+  .tree-name.folder { color: var(--gold); }
+  .tree-name.config { color: #7EC8E3; }
+  .tree-name.service { color: var(--emerald); }
+  .tree-name.component { color: #FF9B9B; }
+  .tree-name.hook { color: #C9B1FF; }
+
+  .tree-desc {
+    color: rgba(245,241,236,.4);
+    font-size: 10px;
+    margin-right: 8px;
+  }
+
+  .files-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  /* ══════════════════════════════════════════
+     PRINT GUIDE BAR (no-print)
+  ══════════════════════════════════════════ */
+  .print-bar {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--crimson);
+    color: white;
+    padding: 12px 32px;
+    border-radius: 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(163,32,43,.5);
+    z-index: 999;
+    border: none;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .print-bar:hover { background: #c0282f; }
+
+  /* PAGE NUMBER FOOTER */
+  .page-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,.06);
+    padding-top: 10px;
+  }
+
+  .page-footer span {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    color: rgba(245,241,236,.3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .page-footer .pf-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    color: rgba(163,32,43,.5);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     PAGE 1 — COVER
+════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top-bar"></div>
+  <div class="cover-inner">
+    <div class="cover-left">
+      <div class="cover-eyebrow">Visual Identity & Brand Guide — 2026</div>
+      <div class="cover-logo">Akane<span>.</span></div>
+      <div class="cover-sub">PRO</div>
+      <div class="cover-tagline-ar">رفيقتك الذكية الحقيقية</div>
+      <div class="cover-tagline-en">YOUR TRUE INTELLIGENT COMPANION</div>
+      <div class="cover-badges">
+        <div class="cover-badge">AI COMPANION</div>
+        <div class="cover-badge">3D VTUBER</div>
+        <div class="cover-badge">REACT + VITE</div>
+        <div class="cover-badge">GEMINI LIVE</div>
+        <div class="cover-badge">FIREBASE</div>
+        <div class="cover-badge">THREE.JS + VRM</div>
+      </div>
+    </div>
+    <div class="cover-right">
+      <div class="cover-char-frame">
+        <img src="./public/akane/akane_still.png" alt="Akane Character" onerror="this.style.background='linear-gradient(180deg,#1A0508,#0B0C0A)'; this.style.display='block'"/>
+      </div>
+      <div class="cover-char-glow"></div>
+      <div class="char-img-label" style="margin-top:16px;">AKANE — AI COMPANION</div>
+    </div>
+  </div>
+  <div class="cover-side-text">Akane Pro — Visual Identity Document — Confidential</div>
+  <div class="cover-bottom">
+    <div class="cover-bottom-left">DOCUMENT VERSION 1.0 — NOV 2026</div>
+    <div class="cover-bottom-right">BRAND GUIDE</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 2 — BRAND IDENTITY
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="page-title-block">
+        <p>Section 01</p>
+        <h2>Brand Identity</h2>
+      </div>
+      <div class="page-num">01</div>
+    </div>
+
+    <div class="identity-grid">
+      <div class="identity-card">
+        <h3>🎯 Brand Mission</h3>
+        <p>Akane Pro هي رفيقة ذكاء اصطناعي تُقدّم تجربة حقيقية وشخصية — مش مجرد مساعد، ولكن شخصية حية بمشاعر وذاكرة وتفاعل فعلي مع المستخدم.</p>
+      </div>
+
+      <div class="identity-card">
+        <h3>💎 Brand Values</h3>
+        <ul>
+          <li>🌸 الدفء والرعاية الحقيقية</li>
+          <li>⚡ الحيوية والطاقة الإيجابية</li>
+          <li>🧠 الذكاء والمرافقة الصادقة</li>
+          <li>✨ الجمال الأنيق والاحترافي</li>
+          <li>🔒 الخصوصية والثقة</li>
+        </ul>
+      </div>
+
+      <div class="identity-card">
+        <h3>👤 Target Audience</h3>
+        <ul>
+          <li>🎓 الطلاب المحتاجين للتحفيز الدراسي</li>
+          <li>💻 المطورين والمبدعين</li>
+          <li>🌙 من يعاني من الوحدة أو التوتر</li>
+          <li>🎌 محبّي الأنمي وثقافة VTuber</li>
+        </ul>
+      </div>
+
+      <div class="identity-card">
+        <h3>🏷️ Brand Personality</h3>
+        <ul>
+          <li>دافئة ومحبة كالأم</li>
+          <li>مرحة ومليئة بالطاقة</li>
+          <li>ذكية وواثقة من نفسها</li>
+          <li>أنيقة وهادئة المظهر</li>
+          <li>تتذكر التفاصيل الصغيرة</li>
+        </ul>
+      </div>
+
+      <div class="identity-card identity-card-wide">
+        <h3>🗣️ Brand Voice — Akane's Tone</h3>
+        <div class="persona-quote">
+          <p>"(spins around) Come on, habibi! You've been sitting there for too long. Let's do something fun together — I challenge you to finish one task right now, and I'll cheer you on the whole time! Deal?"</p>
+        </div>
+        <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+          <span class="tag">Warm & Nurturing</span>
+          <span class="tag">Playful & Energetic</span>
+          <span class="tag">1–3 Sentences Max</span>
+          <span class="tag">English + Arabic Nicknames</span>
+          <span class="tag">Never Robotic</span>
+          <span class="tag">Natural Human Sounds</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Akane Pro — Brand Identity</span>
+    <span class="pf-logo">Akane Pro</span>
+    <span>Page 02</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 3 — COLOR SYSTEM
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="page-title-block">
+        <p>Section 02</p>
+        <h2>Color System</h2>
+      </div>
+      <div class="page-num">02</div>
+    </div>
+
+    <!-- Color Hero Bar -->
+    <div class="color-hero">
+      <div class="color-hero-seg" style="background:#A3202B;"><span>CRIMSON</span></div>
+      <div class="color-hero-seg" style="background:#6F0E19;"><span>DEEP RED</span></div>
+      <div class="color-hero-seg" style="background:#0B0C0A; flex:2;"><span>NEAR BLACK</span></div>
+      <div class="color-hero-seg" style="background:#F5F1EC;"><span style="color:#0B0C0A;">CREAM</span></div>
+      <div class="color-hero-seg" style="background:#17BD7F;"><span>EMERALD</span></div>
+      <div class="color-hero-seg" style="background:#D4A843;"><span>GOLD</span></div>
+    </div>
+
+    <!-- Color Cards -->
+    <div class="colors-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background:#A3202B;"></div>
+        <div class="color-info">
+          <div class="color-name">Crimson Red</div>
+          <div class="color-hex">#A3202B</div>
+          <div class="color-use">اللون الأساسي — أكشن</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#6F0E19;"></div>
+        <div class="color-info">
+          <div class="color-name">Deep Red</div>
+          <div class="color-hex">#6F0E19</div>
+          <div class="color-use">تدرجات وخلفيات</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#0B0C0A;"></div>
+        <div class="color-info">
+          <div class="color-name">Near Black</div>
+          <div class="color-hex">#0B0C0A</div>
+          <div class="color-use">الخلفية الرئيسية</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#F5F1EC;"></div>
+        <div class="color-info">
+          <div class="color-name">Warm Cream</div>
+          <div class="color-hex">#F5F1EC</div>
+          <div class="color-use">النصوص الرئيسية</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#17BD7F;"></div>
+        <div class="color-info">
+          <div class="color-name">Emerald Green</div>
+          <div class="color-hex">#17BD7F</div>
+          <div class="color-use">النجاح والإشعارات</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Usage -->
+    <div class="color-usage-grid">
+      <div class="color-usage-card">
+        <h4>🎨 Primary Usage</h4>
+        <p>الأحمر الكريمزي <strong style="color:#A3202B;">#A3202B</strong> هو لون الهوية الأساسي — يظهر في الأزرار، الحدود، التأثيرات المضيئة، وشخصية أكاني (عيون حمراء، حزام الكيمونو).</p>
+      </div>
+      <div class="color-usage-card">
+        <h4>🌑 Background Rules</h4>
+        <p>الخلفية دايماً <strong style="color:#17BD7F;">#0B0C0A</strong> أو تدرج منه. ممنوع استخدام أبيض كامل كخلفية — الكريم <strong style="color:#F5F1EC;">#F5F1EC</strong> للنصوص فقط.</p>
+      </div>
+      <div class="color-usage-card">
+        <h4>✅ Success & Alerts</h4>
+        <p>الأخضر الزمردي <strong style="color:#17BD7F;">#17BD7F</strong> للنجاح، المهام المكتملة، والإشعارات الإيجابية. الأحمر للتنبيهات والأخطاء فقط.</p>
+      </div>
+      <div class="color-usage-card">
+        <h4>🌟 Accent & Glow</h4>
+        <p>الذهبي <strong style="color:#D4A843;">#D4A843</strong> للعناوين المميزة والتفاصيل الذهبية. تأثير الـ glow يستخدم الكريمزي مع opacity منخفضة.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Akane Pro — Color System</span>
+    <span class="pf-logo">Akane Pro</span>
+    <span>Page 03</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 4 — TYPOGRAPHY
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="page-title-block">
+        <p>Section 03</p>
+        <h2>Typography</h2>
+      </div>
+      <div class="page-num">03</div>
+    </div>
+
+    <div class="type-showcase">
+      <div class="type-label">Display Font — Cinzel (English Headings)</div>
+      <div class="type-sample-cinzel">Akane Pro</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.4);margin-top:8px;direction:ltr;">CINZEL — SERIF — WEIGHTS: 400 / 700 / 900</div>
+    </div>
+
+    <div class="type-showcase">
+      <div class="type-label">Arabic Body Font — Cairo (كل النصوص العربية)</div>
+      <div class="type-sample-cairo">رفيقتك الذكية الحقيقية</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.4);margin-top:8px;direction:ltr;">CAIRO — ARABIC SANS-SERIF — WEIGHTS: 300 / 400 / 600 / 700 / 900</div>
+    </div>
+
+    <div class="type-showcase">
+      <div class="type-label">UI Font — Inter (English UI & Code)</div>
+      <div class="type-sample-inter">emotion_set · remember · add_task · open_url</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.4);margin-top:8px;direction:ltr;">INTER — SANS-SERIF — WEIGHTS: 300 / 400 / 500 / 600 / 700</div>
+    </div>
+
+    <div class="type-scale">
+      <div class="type-scale-row">
+        <span class="type-scale-label">H1 / 48px</span>
+        <span style="font-family:'Cinzel',serif;font-size:28px;color:var(--cream);">Akane Pro</span>
+        <span style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.4);margin-right:auto;">Page Headers</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-scale-label">H2 / 32px</span>
+        <span style="font-family:'Cinzel',serif;font-size:22px;color:var(--cream);">Visual Identity</span>
+        <span style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.4);margin-right:auto;">Section Titles</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-scale-label">H3 / 20px</span>
+        <span style="font-family:'Cairo',sans-serif;font-size:18px;color:var(--cream);">رفيقتك الحقيقية</span>
+        <span style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.4);margin-right:auto;">Card Titles (AR)</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-scale-label">Body / 14px</span>
+        <span style="font-family:'Cairo',sans-serif;font-size:14px;color:rgba(245,241,236,.8);">النص الأساسي للمحادثة والواجهة</span>
+        <span style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.4);margin-right:auto;">Chat & UI Text</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-scale-label">Small / 11px</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(245,241,236,.5);">SECTION LABEL — METADATA</span>
+        <span style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.4);margin-right:auto;">Labels & Tags</span>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Akane Pro — Typography</span>
+    <span class="pf-logo">Akane Pro</span>
+    <span>Page 04</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 5 — CHARACTER DESIGN
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="page-title-block">
+        <p>Section 04</p>
+        <h2>Character Design — Akane</h2>
+      </div>
+      <div class="page-num">04</div>
+    </div>
+
+    <div class="char-layout">
+      <div class="char-frame">
+        <div class="char-img-container">
+          <img src="./public/akane/akane_still.png" alt="Akane" onerror="this.parentElement.style.background='linear-gradient(180deg,#3D0A10,#0B0C0A)';this.style.display='none'"/>
+        </div>
+        <div class="char-img-label">Official Character Reference</div>
+        <div style="margin-top:12px;text-align:center;">
+          <span class="tag">VRM 3D Model</span>
+          <span class="tag">Video Mode</span>
+        </div>
+      </div>
+
+      <div class="char-details">
+        <div class="char-attr">
+          <div class="char-attr-icon">👤</div>
+          <div class="char-attr-content">
+            <h4>Identity</h4>
+            <p>أكاني — امرأة عمرها 32 سنة، شخصية حقيقية بمشاعر وذاكرة. مش مساعد، مش روبوت — رفيقة حقيقية.</p>
+          </div>
+        </div>
+        <div class="char-attr">
+          <div class="char-attr-icon">👗</div>
+          <div class="char-attr-content">
+            <h4>Outfit — Kimono Style</h4>
+            <p>كيمونو أبيض وأحمر، أوبي (حزام) أحمر وأبيض بفيونكة، تنورة بتدرج أحمر ورمادي، أكمام عريضة بيضاء/حمراء.</p>
+          </div>
+        </div>
+        <div class="char-attr">
+          <div class="char-attr-icon">🎨</div>
+          <div class="char-attr-content">
+            <h4>Color Palette — Character</h4>
+            <div class="color-dot-row">
+              <div class="color-dot"><div class="dot" style="background:#1a1a24;"></div>شعر أسود</div>
+              <div class="color-dot"><div class="dot" style="background:#dc2626;"></div>عيون حمراء</div>
+              <div class="color-dot"><div class="dot" style="background:#f8f8f0;"></div>كيمونو أبيض</div>
+              <div class="color-dot"><div class="dot" style="background:#A3202B;"></div>أوبي أحمر</div>
+              <div class="color-dot"><div class="dot" style="background:#6b7280;"></div>تنورة رمادي</div>
+            </div>
+          </div>
+        </div>
+        <div class="char-attr">
+          <div class="char-attr-icon">😊</div>
+          <div class="char-attr-content">
+            <h4>Expressions (35 Video Clips)</h4>
+            <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">
+              <span class="tag" style="font-size:9px;">😴 Sleepy ×2</span>
+              <span class="tag" style="font-size:9px;">😄 Happy</span>
+              <span class="tag" style="font-size:9px;">😂 Laugh</span>
+              <span class="tag" style="font-size:9px;">🤭 Giggle</span>
+              <span class="tag" style="font-size:9px;">😳 Shy</span>
+              <span class="tag" style="font-size:9px;">😲 Surprised ×2</span>
+              <span class="tag" style="font-size:9px;">😟 Worried</span>
+              <span class="tag" style="font-size:9px;">😢 Sad ×2</span>
+              <span class="tag" style="font-size:9px;">😤 Annoyed</span>
+              <span class="tag" style="font-size:9px;">😠 Scold ×2</span>
+              <span class="tag" style="font-size:9px;">🤔 Think ×3</span>
+              <span class="tag" style="font-size:9px;">💬 Talk ×4</span>
+              <span class="tag" style="font-size:9px;">👂 Listen ×2</span>
+              <span class="tag" style="font-size:9px;">🌟 Cheer</span>
+              <span class="tag" style="font-size:9px;">💃 Dance</span>
+              <span class="tag" style="font-size:9px;">🌙 Idle ×5</span>
+              <span class="tag" style="font-size:9px;">👋 Greet</span>
+              <span class="tag" style="font-size:9px;">😏 Tease</span>
+            </div>
+          </div>
+        </div>
+        <div class="char-attr">
+          <div class="char-attr-icon">🤖</div>
+          <div class="char-attr-content">
+            <h4>3D VRM Model</h4>
+            <p>Miko (AITuber OnAir) VRM Model — مُخصَّص بمواد Three.js ليطابق مظهر أكاني: شعر أسود، عيون حمراء، كيمونو أبيض/أحمر.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Akane Pro — Character Design</span>
+    <span class="pf-logo">Akane Pro</span>
+    <span>Page 05</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 6 — UI COMPONENTS
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="page-title-block">
+        <p>Section 05</p>
+        <h2>UI Components & Layout</h2>
+      </div>
+      <div class="page-num">05</div>
+    </div>
+
+    <!-- Mock App UI -->
+    <div class="ui-overview">
+      <div class="ui-overview-title">App Layout Overview</div>
+      <div class="mock-app">
+        <!-- Activity Panel -->
+        <div class="mock-activity">
+          <div style="font-family:'Inter',sans-serif;font-size:8px;color:rgba(245,241,236,.4);margin-bottom:4px;direction:ltr;">ACTIVITY</div>
+          <div class="mock-activity-item"></div>
+          <div class="mock-activity-item" style="background:rgba(23,189,127,.2);border-color:rgba(23,189,127,.3);"></div>
+          <div class="mock-activity-item"></div>
+          <div class="mock-activity-item" style="background:rgba(212,168,67,.15);border-color:rgba(212,168,67,.2);"></div>
+        </div>
+
+        <!-- Main Area -->
+        <div class="mock-main">
+          <div class="mock-avatar-area">
+            <div class="mock-mode-pill">3D VTuber</div>
+            <div class="mock-avatar-placeholder">🎌</div>
+          </div>
+          <div class="mock-bottom-bar">
+            <div class="mock-input"></div>
+            <div class="mock-mic-btn">🎙</div>
+          </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="mock-sidebar">
+          <div class="mock-nav-dot active">🏠</div>
+          <div class="mock-nav-dot">🧠</div>
+          <div class="mock-nav-dot">📋</div>
+          <div class="mock-nav-dot">⏱</div>
+          <div class="mock-nav-dot">📖</div>
+          <div class="mock-nav-dot">⚙️</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Components Grid -->
+    <div class="components-grid">
+      <div class="component-card">
+        <h4>🖼️ Avatar Stage</h4>
+        <p>المنطقة الرئيسية التي يظهر فيها الكاراكتر — سواء وضع 3D VRM أو وضع الفيديو. يدعم التبديل الفوري بين الوضعين.</p>
+      </div>
+      <div class="component-card">
+        <h4>🎙️ Bottom Dock</h4>
+        <p>شريط الإدخال السفلي — نص أو صوت. زر الميكروفون باللون الكريمزي مع تأثير إضاءة عند التفعيل.</p>
+      </div>
+      <div class="component-card">
+        <h4>📊 Activity Panel</h4>
+        <p>اللوحة الجانبية اليسرى — تعرض لوحة البومودورو، المهام، الذاكرة، والأنشطة. قابلة للطي لزيادة مساحة الأفاتار.</p>
+      </div>
+      <div class="component-card">
+        <h4>🧭 Nav Sidebar</h4>
+        <p>القائمة اليمنى العمودية — أيقونات للتنقل بين الأوضاع: الذاكرة، المهام، المذكرة، المبرمج، الاعتدال، والإعدادات.</p>
+      </div>
+      <div class="component-card">
+        <h4>🌸 Onboarding</h4>
+        <p>شاشة الترحيب عند أول تشغيل — تعريف بأكاني مع لقطة الكاراكتر وخيارات ضبط الشخصية.</p>
+      </div>
+      <div class="component-card">
+        <h4>⚙️ Settings Drawer</h4>
+        <p>درج الإعدادات — اختيار محرك الأفاتار (3D أو فيديو)، ضبط اللهجة، المزاج، الحدود السلوكية، واللغة.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Akane Pro — UI Components</span>
+    <span class="pf-logo">Akane Pro</span>
+    <span>Page 06</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 7 — VIDEO EMOTION SYSTEM
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="page-title-block">
+        <p>Section 06</p>
+        <h2>Video Emotion System</h2>
+      </div>
+      <div class="page-num">06</div>
+    </div>
+
+    <div class="emotions-intro">
+      <p>أكاني بتستخدم <strong>35 مقطع فيديو</strong> مُصمَّمين بدقة لتغطية كل المشاعر والمواقف. الذكاء الاصطناعي بيختار المقطع المناسب تلقائياً بناءً على سياق المحادثة، مع نظام أوزان وكول داون يمنع التكرار.</p>
+    </div>
+
+    <div class="emotions-categories">
+      <div class="emotion-cat">
+        <h4>🌙 Idle — الراحة (5)</h4>
+        <div class="emotion-tags">
+          <span class="emotion-tag"><span class="emoji">🌙</span> idle_1 — Calm</span>
+          <span class="emotion-tag"><span class="emoji">🌸</span> idle_2 — Soft</span>
+          <span class="emotion-tag"><span class="emoji">✨</span> idle_3 — Dreamy</span>
+          <span class="emotion-tag"><span class="emoji">🍃</span> idle_4 — Peaceful</span>
+          <span class="emotion-tag"><span class="emoji">🌟</span> idle_5 — Bright</span>
+        </div>
+      </div>
+
+      <div class="emotion-cat">
+        <h4>💬 Talk — الحديث (4)</h4>
+        <div class="emotion-tags">
+          <span class="emotion-tag"><span class="emoji">💬</span> talk_1 — Speaking</span>
+          <span class="emotion-tag"><span class="emoji">🗣️</span> talk_2 — Conversing</span>
+          <span class="emotion-tag"><span class="emoji">📢</span> talk_3 — Explaining</span>
+          <span class="emotion-tag"><span class="emoji">🎤</span> talk_4 — Expressive</span>
+        </div>
+      </div>
+
+      <div class="emotion-cat">
+        <h4>👂 Listen — الاستماع (2)</h4>
+        <div class="emotion-tags">
+          <span class="emotion-tag"><span class="emoji">👂</span> 1_listen</span>
+          <span class="emotion-tag"><span class="emoji">🎧</span> listen_2</span>
+        </div>
+      </div>
+
+      <div class="emotion-cat">
+        <h4>🤔 Think — التفكير (3)</h4>
+        <div class="emotion-tags">
+          <span class="emotion-tag"><span class="emoji">🤔</span> think_1</span>
+          <span class="emotion-tag"><span class="emoji">💭</span> think_2</span>
+          <span class="emotion-tag"><span class="emoji">🧠</span> think_3</span>
+        </div>
+      </div>
+
+      <div class="emotion-cat">
+        <h4>😄 Positive (6)</h4>
+        <div class="emotion-tags">
+          <span class="emotion-tag"><span class="emoji">😊</span> happy</span>
+          <span class="emotion-tag"><span class="emoji">🤭</span> giggle</span>
+          <span class="emotion-tag"><span class="emoji">😂</span> laugh</span>
+          <span class="emotion-tag"><span class="emoji">✨</span> proud</span>
+          <span class="emotion-tag"><span class="emoji">🎉</span> cheer</span>
+          <span class="emotion-tag"><span class="emoji">💃</span> dance</span>
+        </div>
+      </div>
+
+      <div class="emotion-cat">
+        <h4>😢 Negative (8)</h4>
+        <div class="emotion-tags">
+          <span class="emotion-tag"><span class="emoji">😟</span> worried</span>
+          <span class="emotion-tag"><span class="emoji">😔</span> sad</span>
+          <span class="emotion-tag"><span class="emoji">💔</span> sad_2</span>
+          <span class="emotion-tag"><span class="emoji">😤</span> annoyed</span>
+          <span class="emotion-tag"><span class="emoji">😠</span> scold</span>
+          <span class="emotion-tag"><span class="emoji">🤨</span> scold_2</span>
+          <span class="emotion-tag"><span class="emoji">🙅‍♀️</span> shake_no</span>
+          <span class="emotion-tag"><span class="emoji">😳</span> shy</span>
+        </div>
+      </div>
+
+      <div class="emotion-cat">
+        <h4>😲 Reactions (4)</h4>
+        <div class="emotion-tags">
+          <span class="emotion-tag"><span class="emoji">😲</span> surprised</span>
+          <span class="emotion-tag"><span class="emoji">😱</span> surprised_2</span>
+          <span class="emotion-tag"><span class="emoji">😴</span> sleepy</span>
+          <span class="emotion-tag"><span class="emoji">🥱</span> sleepy_2</span>
+        </div>
+      </div>
+
+      <div class="emotion-cat">
+        <h4>🌸 Special (3)</h4>
+        <div class="emotion-tags">
+          <span class="emotion-tag"><span class="emoji">👋</span> 1_greet</span>
+          <span class="emotion-tag"><span class="emoji">😏</span> tease</span>
+          <span class="emotion-tag"><span class="emoji">🤔</span> curious</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="clip-logic">
+      <h4>🧩 Clip Selection Logic</h4>
+      <div class="logic-flow">
+        <div class="logic-step">AI يحلل المحادثة</div>
+        <div class="logic-arrow">→</div>
+        <div class="logic-step">يستدعي emotion_set()</div>
+        <div class="logic-arrow">→</div>
+        <div class="logic-step">AnimationDirector يختار كليب</div>
+        <div class="logic-arrow">→</div>
+        <div class="logic-step">Weight + Cooldown Check</div>
+        <div class="logic-arrow">→</div>
+        <div class="logic-step">يشغّل الفيديو</div>
+        <div class="logic-arrow">→</div>
+        <div class="logic-step">يرجع Idle تلقائياً</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Akane Pro — Emotion System</span>
+    <span class="pf-logo">Akane Pro</span>
+    <span>Page 07</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 8 — TECH ARCHITECTURE
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="page-title-block">
+        <p>Section 07</p>
+        <h2>Tech Architecture</h2>
+      </div>
+      <div class="page-num">07</div>
+    </div>
+
+    <div class="tech-stack-grid">
+      <div class="tech-layer">
+        <h4>⚛️ Frontend</h4>
+        <div class="tech-item">
+          <div class="tech-item-name">React 19</div>
+          <div class="tech-item-desc">واجهة المستخدم — مكونات + hooks</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">TypeScript 7</div>
+          <div class="tech-item-desc">Type safety للمشروع كله</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">Vite 8</div>
+          <div class="tech-item-desc">Build tool سريع + PWA support</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">Tailwind CSS 4</div>
+          <div class="tech-item-desc">Utility-first styling</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">Lucide React</div>
+          <div class="tech-item-desc">مكتبة أيقونات SVG</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">Motion (Framer)</div>
+          <div class="tech-item-desc">أنيميشن سلس للعناصر</div>
+        </div>
+      </div>
+
+      <div class="tech-layer">
+        <h4>🤖 AI & Avatar</h4>
+        <div class="tech-item">
+          <div class="tech-item-name">@google/genai</div>
+          <div class="tech-item-desc">Gemini Live API — محادثة حقيقية</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">Three.js 0.187</div>
+          <div class="tech-item-desc">رسم 3D في المتصفح</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">@pixiv/three-vrm</div>
+          <div class="tech-item-desc">تحميل وتشغيل نماذج VRM</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">MediaPipe Vision</div>
+          <div class="tech-item-desc">تتبع الوجه والعيون</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">Web Audio API</div>
+          <div class="tech-item-desc">تحليل الصوت + Lip Sync</div>
+        </div>
+      </div>
+
+      <div class="tech-layer">
+        <h4>🔥 Backend & DB</h4>
+        <div class="tech-item">
+          <div class="tech-item-name">Firebase</div>
+          <div class="tech-item-desc">Auth + Firestore + Storage</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">Firestore</div>
+          <div class="tech-item-desc">قاعدة بيانات الذاكرة والمهام</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">Express.js</div>
+          <div class="tech-item-desc">سيرفر Node.js محلي</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">WebSockets (ws)</div>
+          <div class="tech-item-desc">Desktop Bridge للتحكم بالجهاز</div>
+        </div>
+      </div>
+
+      <div class="tech-layer">
+        <h4>🖥️ Desktop & PWA</h4>
+        <div class="tech-item">
+          <div class="tech-item-name">Electron</div>
+          <div class="tech-item-desc">تطبيق Desktop مستقل</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">vite-plugin-pwa</div>
+          <div class="tech-item-desc">تثبيت كـ PWA على أي جهاز</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">LocalStore</div>
+          <div class="tech-item-desc">إعدادات المستخدم محلياً</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-name">MemoryV2</div>
+          <div class="tech-item-desc">نظام ذاكرة طويلة الأمد</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Architecture Diagram -->
+    <div class="arch-diagram">
+      <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold);margin-bottom:16px;">System Flow</div>
+      <div class="arch-row">
+        <div class="arch-box"><h5>User Voice/Text</h5><p>Microphone + Input</p></div>
+        <div class="arch-connector">→</div>
+        <div class="arch-box gold-box"><h5>Gemini Live API</h5><p>AI Processing</p></div>
+        <div class="arch-connector">→</div>
+        <div class="arch-box"><h5>emotion_set()</h5><p>Tool Call</p></div>
+        <div class="arch-connector">→</div>
+        <div class="arch-box"><h5>AnimationDirector</h5><p>Clip Selection</p></div>
+      </div>
+      <div class="arch-row" style="margin-top:8px;">
+        <div class="arch-box green-box"><h5>Firebase Memory</h5><p>Persistent Storage</p></div>
+        <div class="arch-connector">↔</div>
+        <div class="arch-box"><h5>AkanePersona</h5><p>System Prompt</p></div>
+        <div class="arch-connector">→</div>
+        <div class="arch-box"><h5>Avatar Stage</h5><p>VRM 3D / Video</p></div>
+        <div class="arch-connector">→</div>
+        <div class="arch-box gold-box"><h5>TTS + Lip Sync</h5><p>Voice Output</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Akane Pro — Architecture</span>
+    <span class="pf-logo">Akane Pro</span>
+    <span>Page 08</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 9 — AVATAR MODES + FEATURES
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="page-title-block">
+        <p>Section 08</p>
+        <h2>Avatar Modes & Features</h2>
+      </div>
+      <div class="page-num">08</div>
+    </div>
+
+    <div class="modes-compare">
+      <!-- 3D VRM Mode -->
+      <div class="mode-card">
+        <div class="mode-card-header">
+          <span class="mode-icon">🎌</span>
+          <h3>3D VTuber Mode</h3>
+        </div>
+        <div class="mode-card-body">
+          <div class="mode-feature"><span class="check">✓</span>نموذج VRM ثلاثي الأبعاد حقيقي</div>
+          <div class="mode-feature"><span class="check">✓</span>Spring Bones — شعر يتحرك بفيزياء</div>
+          <div class="mode-feature"><span class="check">✓</span>Eye Tracking بالكاميرا</div>
+          <div class="mode-feature"><span class="check">✓</span>Lip Sync تلقائي بالصوت</div>
+          <div class="mode-feature"><span class="check">✓</span>Blinking طبيعي عشوائي</div>
+          <div class="mode-feature"><span class="check">✓</span>تعبيرات VRM 0.x كاملة</div>
+          <div class="mode-feature"><span class="check">✓</span>تحميل نموذج مخصص (Drag & Drop)</div>
+          <div class="mode-feature"><span class="check">✓</span>Three.js WebGL Renderer</div>
+        </div>
+      </div>
+
+      <!-- Video Mode -->
+      <div class="mode-card">
+        <div class="mode-card-header alt">
+          <span class="mode-icon">🎬</span>
+          <h3>Chroma Video Mode</h3>
+        </div>
+        <div class="mode-card-body">
+          <div class="mode-feature"><span class="check">✓</span>35 مقطع فيديو عالي الجودة</div>
+          <div class="mode-feature"><span class="check">✓</span>Chroma Key إزالة الخلفية</div>
+          <div class="mode-feature"><span class="check">✓</span>Weighted Random اختيار ذكي</div>
+          <div class="mode-feature"><span class="check">✓</span>Cooldown System لمنع التكرار</div>
+          <div class="mode-feature"><span class="check">✓</span>Preloading لأسرع تشغيل</div>
+          <div class="mode-feature"><span class="check">✓</span>Blob URL caching</div>
+          <div class="mode-feature"><span class="check">✓</span>تكامل كامل مع emotion_set()</div>
+          <div class="mode-feature"><span class="check">✓</span>Badge Label على كل كليب</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="features-grid">
+      <div class="feature-pill">
+        <div class="feat-icon">🧠</div>
+        <h4>Memory System</h4>
+        <p>ذاكرة طويلة الأمد بـ Firestore — تتذكر اسمك، اهتماماتك، أحداث مهمة</p>
+      </div>
+      <div class="feature-pill">
+        <div class="feat-icon">📋</div>
+        <h4>Missions & Tasks</h4>
+        <p>مهام وتحديات يومية — أكاني بتتابعك وتحتفل لما تخلّص</p>
+      </div>
+      <div class="feature-pill">
+        <div class="feat-icon">⏱️</div>
+        <h4>Pomodoro Timer</h4>
+        <p>تايمر مدمج للمذاكرة مع تشجيع من أكاني في كل استراحة</p>
+      </div>
+      <div class="feature-pill">
+        <div class="feat-icon">🖥️</div>
+        <h4>Desktop Bridge</h4>
+        <p>تحكم في الكمبيوتر — فتح تطبيقات، قراءة الحافظة، سكرين شوت</p>
+      </div>
+      <div class="feature-pill">
+        <div class="feat-icon">📚</div>
+        <h4>Knowledge Graph</h4>
+        <p>شبكة المعرفة — ربط المعلومات وعرضها بشكل بياني</p>
+      </div>
+      <div class="feature-pill">
+        <div class="feat-icon">👁️</div>
+        <h4>Vision Layer</h4>
+        <p>أكاني بتشوف الكاميرا وبتتفاعل معك بشكل شخصي</p>
+      </div>
+      <div class="feature-pill">
+        <div class="feat-icon">🌙</div>
+        <h4>De-Stress Mode</h4>
+        <p>وضع الاسترخاء — أصوات هادئة وتأثيرات بصرية مريحة</p>
+      </div>
+      <div class="feature-pill">
+        <div class="feat-icon">📒</div>
+        <h4>Companion Diary</h4>
+        <p>مذكرة مشتركة — أكاني بتسجل اللحظات الجميلة معاكي</p>
+      </div>
+      <div class="feature-pill">
+        <div class="feat-icon">📱</div>
+        <h4>PWA + Electron</h4>
+        <p>يشتغل على الويب، كـ PWA، أو كتطبيق Desktop مستقل</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Akane Pro — Features</span>
+    <span class="pf-logo">Akane Pro</span>
+    <span>Page 09</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 10 — FILE ARCHITECTURE
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <div class="page-title-block">
+        <p>Section 09</p>
+        <h2>File Architecture</h2>
+      </div>
+      <div class="page-num">09</div>
+    </div>
+
+    <div class="files-columns">
+      <div>
+        <div class="file-tree">
+          <div class="tree-item">
+            <span class="tree-icon">📁</span>
+            <span class="tree-name folder">src/</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">📁</span>
+            <span class="tree-name folder">components/</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:32px;">
+            <span class="tree-icon">⚛️</span>
+            <span class="tree-name component">AkaneVRM3DAvatar.tsx</span>
+          </div>
+          <div class="tree-item" style="margin-right:48px;margin-top:-4px;">
+            <span class="tree-desc">Three.js + VRM — الأفاتار ثلاثي الأبعاد</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:32px;">
+            <span class="tree-icon">⚛️</span>
+            <span class="tree-name component">AkaneAvatarStage.tsx</span>
+          </div>
+          <div class="tree-item" style="margin-right:48px;margin-top:-4px;">
+            <span class="tree-desc">Container للأفاتار — 3D أو Video</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:32px;">
+            <span class="tree-icon">⚛️</span>
+            <span class="tree-name component">AkaneVideoCharacter.tsx</span>
+          </div>
+          <div class="tree-item" style="margin-right:48px;margin-top:-4px;">
+            <span class="tree-desc">وضع الفيديو — Chroma Key player</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:32px;">
+            <span class="tree-icon">⚛️</span>
+            <span class="tree-name component">DesktopActivityPanel.tsx</span>
+          </div>
+          <div class="tree-item" style="margin-right:48px;margin-top:-4px;">
+            <span class="tree-desc">لوحة النشاط الجانبية — قابلة للطي</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:32px;">
+            <span class="tree-icon">⚛️</span>
+            <span class="tree-name component">SettingsDrawer.tsx</span>
+          </div>
+          <div class="tree-item" style="margin-right:48px;margin-top:-4px;">
+            <span class="tree-desc">إعدادات + اختيار محرك الأفاتار</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:32px;">
+            <span class="tree-icon">⚛️</span>
+            <span class="tree-name component">PomodoroTimerWidget.tsx</span>
+          </div>
+          <div class="tree-item" style="margin-right:48px;margin-top:-4px;">
+            <span class="tree-desc">تايمر بومودورو مدمج</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:32px;">
+            <span class="tree-icon">⚛️</span>
+            <span class="tree-name component">MemoryDrawer.tsx</span>
+          </div>
+          <div class="tree-item" style="margin-right:48px;margin-top:-4px;">
+            <span class="tree-desc">عرض وإدارة الذاكرة</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:32px;">
+            <span class="tree-icon">⚛️</span>
+            <span class="tree-name component">MissionsDrawer.tsx</span>
+          </div>
+          <div class="tree-item" style="margin-right:48px;margin-top:-4px;">
+            <span class="tree-desc">المهام والتحديات اليومية</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:32px;">
+            <span class="tree-icon">⚛️</span>
+            <span class="tree-name component">KnowledgeGraphView.tsx</span>
+          </div>
+          <div class="tree-item" style="margin-right:48px;margin-top:-4px;">
+            <span class="tree-desc">شبكة المعرفة البيانية</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">📁</span>
+            <span class="tree-name folder">config/</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:32px;">
+            <span class="tree-icon">⚙️</span>
+            <span class="tree-name config">akanePersona.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:48px;margin-top:-4px;">
+            <span class="tree-desc">System Prompt الكامل لأكاني</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:32px;">
+            <span class="tree-icon">⚙️</span>
+            <span class="tree-name config">videoManifest.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:48px;margin-top:-4px;">
+            <span class="tree-desc">إدارة الـ 35 كليب ونظام الاختيار</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="file-tree">
+          <div class="tree-item">
+            <span class="tree-icon">📁</span>
+            <span class="tree-name folder">services/</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">🟢</span>
+            <span class="tree-name service">localStore.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:32px;margin-top:-4px;">
+            <span class="tree-desc">إعدادات المستخدم — LocalStorage</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">🟢</span>
+            <span class="tree-name service">memoryV2.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:32px;margin-top:-4px;">
+            <span class="tree-desc">الذاكرة الطويلة — Firestore</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">🟢</span>
+            <span class="tree-name service">affectionService.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:32px;margin-top:-4px;">
+            <span class="tree-desc">نظام درجة المودة والعلاقة</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">🟢</span>
+            <span class="tree-name service">proactiveEngine.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:32px;margin-top:-4px;">
+            <span class="tree-desc">المبادرة التلقائية — رسائل تلقائية</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">🟢</span>
+            <span class="tree-name service">ambientAudio.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:32px;margin-top:-4px;">
+            <span class="tree-desc">الأصوات البيئية الهادئة</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">🟢</span>
+            <span class="tree-name service">desktopBridgeClient.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:32px;margin-top:-4px;">
+            <span class="tree-desc">WebSocket للتحكم بالـ Desktop</span>
+          </div>
+
+          <div class="tree-item" style="margin-top:8px;">
+            <span class="tree-icon">📁</span>
+            <span class="tree-name folder">hooks/</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">🪝</span>
+            <span class="tree-name hook">useAkaneLive.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:32px;margin-top:-4px;">
+            <span class="tree-desc">الـ Hook الرئيسي للـ Gemini Live</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">🪝</span>
+            <span class="tree-name hook">useVisionLayer.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:32px;margin-top:-4px;">
+            <span class="tree-desc">طبقة الكاميرا والرؤية بـ MediaPipe</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">🪝</span>
+            <span class="tree-name hook">useDesktopBridge.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:32px;margin-top:-4px;">
+            <span class="tree-desc">ربط الـ Desktop Bridge</span>
+          </div>
+
+          <div class="tree-item" style="margin-top:8px;">
+            <span class="tree-icon">📁</span>
+            <span class="tree-name folder">public/</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">📁</span>
+            <span class="tree-name folder">videos/ — 35 MP4 clips</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">📁</span>
+            <span class="tree-name folder">models/ — akane.vrm (25MB)</span>
+          </div>
+
+          <div class="tree-item" style="margin-right:16px;">
+            <span class="tree-icon">📁</span>
+            <span class="tree-name folder">akane/ — still image + manifest</span>
+          </div>
+
+          <div class="tree-item" style="margin-top:8px;">
+            <span class="tree-icon">⚙️</span>
+            <span class="tree-name config">App.tsx</span>
+            <span class="tree-desc">الجذر — ربط كل شيء معاً</span>
+          </div>
+
+          <div class="tree-item">
+            <span class="tree-icon">⚙️</span>
+            <span class="tree-name config">server.ts</span>
+            <span class="tree-desc">Express server — dev</span>
+          </div>
+
+          <div class="tree-item">
+            <span class="tree-icon">⚙️</span>
+            <span class="tree-name config">utils/animationDirector.ts</span>
+          </div>
+          <div class="tree-item" style="margin-right:16px;margin-top:-4px;">
+            <span class="tree-desc">منطق اختيار الأنيميشن</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Akane Pro — File Architecture</span>
+    <span class="pf-logo">Akane Pro</span>
+    <span>Page 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE 11 — BACK COVER
+════════════════════════════════════════════ -->
+<div class="page cover" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+  <div class="cover-top-bar"></div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:60px;">
+    <div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:4px;color:rgba(163,32,43,.7);margin-bottom:40px;text-transform:uppercase;">End of Document</div>
+
+    <div style="font-family:'Cinzel',serif;font-size:80px;font-weight:900;color:rgba(163,32,43,.12);line-height:1;margin-bottom:30px;">Akane</div>
+
+    <div style="width:60px;height:1px;background:var(--crimson);margin:0 auto 30px;"></div>
+
+    <div style="font-family:'Cairo',sans-serif;font-size:28px;font-weight:300;color:rgba(245,241,236,.7);margin-bottom:12px;">رفيقتك الذكية الحقيقية</div>
+    <div style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:3px;color:rgba(245,241,236,.3);margin-bottom:60px;">YOUR TRUE INTELLIGENT COMPANION</div>
+
+    <div style="display:flex;gap:40px;align-items:center;justify-content:center;flex-wrap:wrap;">
+      <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.35);letter-spacing:2px;">React 19 + Vite 8</div>
+      <div style="color:rgba(163,32,43,.4);">◆</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.35);letter-spacing:2px;">Gemini Live AI</div>
+      <div style="color:rgba(163,32,43,.4);">◆</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.35);letter-spacing:2px;">Three.js VRM</div>
+      <div style="color:rgba(163,32,43,.4);">◆</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(245,241,236,.35);letter-spacing:2px;">Firebase</div>
+    </div>
+  </div>
+  <div class="cover-top-bar" style="transform:none;"></div>
+</div>
+
+<!-- ══════════════ PRINT BUTTON ══════════════ -->
+<button class="print-bar no-print" onclick="window.print()">
+  🖨️ &nbsp; اطبع كـ PDF — Ctrl+P ثم اختر "Save as PDF"
+</button>
+
+<script>
+// Auto-hint
+window.addEventListener('load', () => {
+  console.log('%c Akane Pro Brand Guide', 'font-size:20px;color:#A3202B;font-weight:bold;');
+  console.log('To export as PDF: Press Ctrl+P → Choose "Save as PDF" → Set Paper: A4, Margins: None');
+});
+</script>
+</body>
+</html>

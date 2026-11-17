@@ -1,0 +1,6 @@
+{
+  "name": "Akane Pro",
+  "description": "Standalone local-first AI voice and video companion with semantic behavior direction, live memory, and smart missions.",
+  "requestFramePermissions": ["microphone", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

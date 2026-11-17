@@ -1,0 +1,107 @@
+{
+  "character": "akane",
+  "outfit": "default",
+  "still": "/akane/akane_still.png",
+  "baseUrl": "/videos",
+  "clips": {
+    "idle": [
+      { "id": "idle_1", "file": "idle_1.mp4", "weight": 100, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": true, "badgeLabel": "🌙 Calm", "fallbackDurationMs": 5500, "semanticRule": "Single neutral idle pose held with subtle breathing." }
+    ],
+    "talk": [
+      { "id": "talk_1", "file": "talk_1.mp4", "mood": "neutral", "weight": 100, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": true, "badgeLabel": "💬 Speaking", "fallbackDurationMs": 4200 },
+      { "id": "talk_2", "file": "talk_2.mp4", "mood": "warm", "weight": 90, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": true, "badgeLabel": "💬 Conversing", "fallbackDurationMs": 4500 },
+      { "id": "talk_3", "file": "talk_3.mp4", "mood": "calm", "weight": 80, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": true, "badgeLabel": "💬 Explaining", "fallbackDurationMs": 3800 },
+      { "id": "talk_4", "file": "talk_4.mp4", "mood": "playful", "weight": 75, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "💬 Expressive", "fallbackDurationMs": 4000 }
+    ],
+    "listen": [
+      { "id": "1_listen", "file": "1_listen.mp4", "weight": 100, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": true, "badgeLabel": "👂 Listening", "fallbackDurationMs": 4600 },
+      { "id": "listen_2", "file": "listen_2.mp4", "weight": 85, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "👂 Attentive", "fallbackDurationMs": 4600 }
+    ],
+    "think": [
+      { "id": "think_1", "file": "think_1.mp4", "weight": 100, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": true, "badgeLabel": "🤔 Thinking", "fallbackDurationMs": 3800 },
+      { "id": "think_2", "file": "think_2.mp4", "weight": 80, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "🤔 Pondering", "fallbackDurationMs": 3600 },
+      { "id": "think_3", "file": "think_3.mp4", "weight": 75, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "🤔 Reflecting", "fallbackDurationMs": 4000 }
+    ],
+    "react": {
+      "greet": [
+        { "id": "1_greet", "file": "1_greet.mp4", "weight": 100, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": true, "urgent": true, "badgeLabel": "👋 Greeting", "fallbackDurationMs": 4200, "semanticRule": "Warm greeting wave played immediately on explicit greet/wave." }
+      ],
+      "goodbye": [
+        { "id": "goodbye", "file": "1_greet.mp4", "weight": 100, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": true, "urgent": true, "badgeLabel": "👋 Goodbye", "fallbackDurationMs": 4200, "semanticRule": "Warm farewell wave." }
+      ],
+      "happy": [
+        { "id": "happy", "file": "happy.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": true, "badgeLabel": "😊 Happy", "fallbackDurationMs": 3400, "semanticRule": "Warm smile when user shares something pleasant or reassuring." }
+      ],
+      "hug": [
+        { "id": "hug", "file": "happy.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": true, "badgeLabel": "🤗 Affectionate", "fallbackDurationMs": 3400, "semanticRule": "Warm affectionate embrace gesture." }
+      ],
+      "giggle": [
+        { "id": "giggle", "file": "giggle.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "🤭 Giggling", "fallbackDurationMs": 3400, "semanticRule": "Soft chuckle when user says something witty or lighthearted." }
+      ],
+      "laugh": [
+        { "id": "laugh", "file": "laugh.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "😂 Laughing", "fallbackDurationMs": 3600, "semanticRule": "Genuine joyful laugh for big punchlines or hilarious moments." }
+      ],
+      "proud": [
+        { "id": "proud", "file": "proud.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "✨ Proud", "fallbackDurationMs": 3600, "semanticRule": "Warm pride when user finishes a real task or mission." }
+      ],
+      "shy": [
+        { "id": "shy", "file": "shy.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "😳 Bashful", "fallbackDurationMs": 3500, "semanticRule": "Soft bashful reaction on sweet direct compliments." }
+      ],
+      "blush": [
+        { "id": "blush", "file": "shy.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "😊 Blushing", "fallbackDurationMs": 3500, "semanticRule": "Playful brief shy blush on sweet compliments." }
+      ],
+      "curious": [
+        { "id": "curious", "file": "curious.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "🧐 Curious", "fallbackDurationMs": 3200, "semanticRule": "Head tilt with genuine interest on intriguing topics." }
+      ],
+      "think": [
+        { "id": "think", "file": "think_1.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": true, "badgeLabel": "🤔 Thinking", "fallbackDurationMs": 3800, "semanticRule": "Thoughtful reaction pose." }
+      ],
+      "surprised": [
+        { "id": "surprised", "file": "surprised.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "😮 Surprised", "fallbackDurationMs": 3200, "semanticRule": "Genuine surprise for unexpected news." },
+        { "id": "surprised_2", "file": "surprised_2.mp4", "weight": 75, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "😲 Astonished", "fallbackDurationMs": 3200, "semanticRule": "Wide-eyed surprise for major twists or reveals." }
+      ],
+      "annoyed": [
+        { "id": "annoyed", "file": "annoyed.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "😒 Unimpressed", "fallbackDurationMs": 3200, "semanticRule": "Mild playful exasperation when user pushes a silly joke too far." }
+      ],
+      "pout": [
+        { "id": "pout", "file": "annoyed.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "😤 Cute Pout", "fallbackDurationMs": 3200, "semanticRule": "Cute playful pout when teased or ignored." }
+      ],
+      "worried": [
+        { "id": "worried", "file": "worried.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "🥺 Worried", "fallbackDurationMs": 3500, "semanticRule": "Soft concerned empathy when user is stressed or anxious." }
+      ],
+      "comfort": [
+        { "id": "comfort", "file": "worried.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "🤍 Comforting", "fallbackDurationMs": 3500, "semanticRule": "Gentle comforting warmth when user is tired or stressed." }
+      ],
+      "sad": [
+        { "id": "sad", "file": "sad.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "😔 Empathetic", "fallbackDurationMs": 3600, "semanticRule": "Quiet comforting empathy when user shares disappointment." },
+        { "id": "sad_2", "file": "sad_2.mp4", "weight": 70, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "💔 Comforting", "fallbackDurationMs": 3600, "semanticRule": "Deep soft empathy for heavier emotional moments." }
+      ],
+      "sleepy": [
+        { "id": "sleepy", "file": "sleepy.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "😴 Sleepy", "fallbackDurationMs": 3800, "semanticRule": "Late night drowsiness (12AM–5AM) or when user mentions tiredness." },
+        { "id": "sleepy_2", "file": "sleepy_2.mp4", "weight": 70, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "🥱 Drowsy", "fallbackDurationMs": 3800, "semanticRule": "Drowsy blink late at night or when tired." }
+      ],
+      "cheer": [
+        { "id": "cheer", "file": "cheer.mp4", "weight": 100, "cooldownMs": 25000, "chromaTolerance": 0.16, "preload": false, "urgent": true, "badgeLabel": "🎉 Cheering", "fallbackDurationMs": 3600, "semanticRule": "Celebration when user completes a real task/mission or goal." }
+      ],
+      "dance": [
+        { "id": "dance", "file": "dance.mp4", "weight": 100, "cooldownMs": 25000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "💃 Dancing", "fallbackDurationMs": 4600, "semanticRule": "Only when explicitly asked to dance or on major celebration." }
+      ],
+      "tease": [
+        { "id": "tease", "file": "tease.mp4", "weight": 100, "cooldownMs": 25000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "😏 Teasing", "fallbackDurationMs": 3500, "semanticRule": "Playful teasing when user makes a silly excuse." }
+      ],
+      "scold": [
+        { "id": "scold", "file": "scold.mp4", "weight": 100, "cooldownMs": 25000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "☝️ Scolding", "fallbackDurationMs": 3400, "semanticRule": "Gentle scolding for procrastination or bad habits." },
+        { "id": "scold_2", "file": "scold_2.mp4", "weight": 70, "cooldownMs": 25000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "😤 Firm", "fallbackDurationMs": 3400, "semanticRule": "Firm callout on unhealthy excuses." }
+      ],
+      "shake_no": [
+        { "id": "shake_no", "file": "shake_no.mp4", "weight": 100, "cooldownMs": 25000, "chromaTolerance": 0.16, "preload": false, "badgeLabel": "🙅‍♀️ Declining", "fallbackDurationMs": 3200, "semanticRule": "Refusing a bad idea or silly excuse." }
+      ],
+      "nod_yes": [
+        { "id": "nod_yes", "file": "1_listen.mp4", "weight": 100, "cooldownMs": 12000, "chromaTolerance": 0.16, "preload": true, "badgeLabel": "🙂 Nodding", "fallbackDurationMs": 3200, "semanticRule": "Warm agreeing nod." }
+      ],
+      "wait": [
+        { "id": "wait", "file": "idle_1.mp4", "weight": 100, "cooldownMs": 0, "chromaTolerance": 0.16, "preload": true, "badgeLabel": "⏳ Waiting", "fallbackDurationMs": 4000, "semanticRule": "Calm waiting pose." }
+      ]
+    }
+  }
+}

@@ -1,0 +1,176 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global safety net: deny everything not explicitly permitted
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function hasValidParentUser(userId) {
+      let parentPath = /databases/$(database)/documents/users/$(userId);
+      return exists(parentPath) && get(parentPath).data.uid == request.auth.uid;
+    }
+
+    function isValidUserProfile(data, userId) {
+      return data.keys().hasAll(['uid', 'email', 'displayName', 'companionMode', 'totalSessions', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['uid', 'email', 'displayName', 'companionMode', 'totalSessions', 'createdAt', 'updatedAt'])
+        && data.uid is string && data.uid == userId && isValidId(data.uid)
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 254
+        && data.displayName is string && data.displayName.size() >= 1 && data.displayName.size() <= 100
+        && data.companionMode is string && data.companionMode in ['companion', 'tsundere', 'wife']
+        && data.totalSessions is int && data.totalSessions >= 0 && data.totalSessions <= 1000000
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidMemoryItem(data, userId) {
+      return data.keys().hasAll(['uid', 'kind', 'content', 'importance', 'resolved', 'source', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['uid', 'kind', 'content', 'dueAt', 'importance', 'resolved', 'source', 'lastMentionedAt', 'createdAt', 'updatedAt'])
+        && data.uid is string && data.uid == userId && isValidId(data.uid)
+        && data.kind is string && data.kind in ['fact', 'preference', 'event', 'open_loop']
+        && data.content is string && data.content.size() >= 1 && data.content.size() <= 1000
+        && (!('dueAt' in data) || (data.dueAt is string && data.dueAt.size() <= 120))
+        && data.importance is int && data.importance >= 1 && data.importance <= 10
+        && data.resolved is bool
+        && data.source is string && data.source in ['voice', 'chat', 'manual']
+        && (!('lastMentionedAt' in data) || data.lastMentionedAt is timestamp)
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidSessionSummary(data, userId) {
+      return data.keys().hasAll(['uid', 'summary', 'turnCount', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['uid', 'summary', 'turnCount', 'createdAt', 'updatedAt'])
+        && data.uid is string && data.uid == userId && isValidId(data.uid)
+        && data.summary is string && data.summary.size() >= 1 && data.summary.size() <= 2000
+        && data.turnCount is int && data.turnCount >= 0 && data.turnCount <= 10000
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidUserTask(data, userId) {
+      return data.keys().hasAll(['uid', 'title', 'description', 'priority', 'status', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['uid', 'title', 'description', 'priority', 'status', 'createdAt', 'updatedAt'])
+        && data.uid is string && data.uid == userId && isValidId(data.uid)
+        && data.title is string && data.title.size() >= 1 && data.title.size() <= 200
+        && data.description is string && data.description.size() <= 1000
+        && data.priority is string && data.priority in ['low', 'medium', 'high']
+        && data.status is string && data.status in ['pending', 'completed']
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    match /users/{userId} {
+      allow get: if isValidId(userId) && isOwner(userId);
+      allow list: if false;
+
+      allow create: if isValidId(userId)
+        && isOwner(userId)
+        && isValidUserProfile(incoming(), userId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+
+      allow update: if isValidId(userId)
+        && isOwner(userId)
+        && isValidUserProfile(incoming(), userId)
+        && incoming().uid == existing().uid
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'companionMode', 'totalSessions', 'updatedAt']);
+
+      allow delete: if isValidId(userId) && isOwner(userId);
+
+      match /memories/{memoryId} {
+        allow get: if isValidId(userId) && isValidId(memoryId) && isOwner(userId) && hasValidParentUser(userId);
+        allow list: if isValidId(userId) && isOwner(userId) && resource.data.uid == request.auth.uid;
+
+        allow create: if isValidId(userId)
+          && isValidId(memoryId)
+          && isOwner(userId)
+          && isValidMemoryItem(incoming(), userId)
+          && hasValidParentUser(userId)
+          && incoming().createdAt == request.time
+          && incoming().updatedAt == request.time;
+
+        allow update: if isValidId(userId)
+          && isValidId(memoryId)
+          && isOwner(userId)
+          && isValidMemoryItem(incoming(), userId)
+          && hasValidParentUser(userId)
+          && incoming().uid == existing().uid
+          && incoming().createdAt == existing().createdAt
+          && incoming().updatedAt == request.time
+          && (
+            incoming().diff(existing()).affectedKeys().hasOnly(['resolved', 'updatedAt']) ||
+            incoming().diff(existing()).affectedKeys().hasOnly(['lastMentionedAt', 'updatedAt']) ||
+            incoming().diff(existing()).affectedKeys().hasOnly(['content', 'importance', 'dueAt', 'updatedAt'])
+          );
+
+        allow delete: if isValidId(userId) && isValidId(memoryId) && isOwner(userId) && hasValidParentUser(userId);
+      }
+
+      match /sessionSummaries/{summaryId} {
+        allow get: if isValidId(userId) && isValidId(summaryId) && isOwner(userId) && hasValidParentUser(userId);
+        allow list: if isValidId(userId) && isOwner(userId) && resource.data.uid == request.auth.uid;
+
+        allow create: if isValidId(userId)
+          && isValidId(summaryId)
+          && isOwner(userId)
+          && isValidSessionSummary(incoming(), userId)
+          && hasValidParentUser(userId)
+          && incoming().createdAt == request.time
+          && incoming().updatedAt == request.time;
+
+        allow update: if false;
+        allow delete: if isValidId(userId) && isValidId(summaryId) && isOwner(userId) && hasValidParentUser(userId);
+      }
+
+      match /tasks/{taskId} {
+        allow get: if isValidId(userId) && isValidId(taskId) && isOwner(userId) && hasValidParentUser(userId);
+        allow list: if isValidId(userId) && isOwner(userId) && resource.data.uid == request.auth.uid;
+
+        allow create: if isValidId(userId)
+          && isValidId(taskId)
+          && isOwner(userId)
+          && isValidUserTask(incoming(), userId)
+          && hasValidParentUser(userId)
+          && incoming().createdAt == request.time
+          && incoming().updatedAt == request.time;
+
+        allow update: if isValidId(userId)
+          && isValidId(taskId)
+          && isOwner(userId)
+          && isValidUserTask(incoming(), userId)
+          && hasValidParentUser(userId)
+          && incoming().uid == existing().uid
+          && incoming().createdAt == existing().createdAt
+          && incoming().updatedAt == request.time
+          && incoming().diff(existing()).affectedKeys().hasOnly(['status', 'title', 'description', 'priority', 'updatedAt']);
+
+        allow delete: if isValidId(userId) && isValidId(taskId) && isOwner(userId) && hasValidParentUser(userId);
+      }
+    }
+  }
+}

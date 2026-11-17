@@ -1,0 +1,278 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Private user account profile, personalization fields, onboarding status, voice preferences, and usage metrics.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the user.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "preferredNickname": {
+          "type": "string",
+          "description": "4-5 names or nicknames the companion should call the user (comma-separated).",
+          "maxLength": 200
+        },
+        "age": {
+          "type": "string",
+          "description": "User age.",
+          "maxLength": 20
+        },
+        "aboutMe": {
+          "type": "string",
+          "description": "Short bio, hobbies, or vibe notes for Luna.",
+          "maxLength": 400
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "User email address (PII, strictly owner-only).",
+          "minLength": 3,
+          "maxLength": 254
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Optional profile avatar URL.",
+          "maxLength": 1024
+        },
+        "onboardingCompleted": {
+          "type": "boolean",
+          "description": "Whether the user completed the first-time onboarding modal."
+        },
+        "preferredMode": {
+          "type": "string",
+          "description": "Active companion mode (Luna, Kira, or Momo).",
+          "enum": ["wife", "tsundere", "companion"]
+        },
+        "sceneTheme": {
+          "type": "string",
+          "description": "Interactive background scene theme.",
+          "enum": ["aurora", "rainy_window", "cafe", "starry_sky", "cyber_tokyo"]
+        },
+        "roomAtmosphere": {
+          "type": "string",
+          "description": "Custom room lighting atmosphere overlay preset.",
+          "enum": ["none", "candlelight", "blossom", "sunrise", "moonlight"]
+        },
+        "timeOfDaySync": {
+          "type": "boolean",
+          "description": "Whether room lighting automatically syncs to local time of day."
+        },
+        "uiLanguage": {
+          "type": "string",
+          "description": "Preferred UI interface language.",
+          "enum": ["en", "ar"]
+        },
+        "outfitStyle": {
+          "type": "string",
+          "description": "Selected character outfit/palette style.",
+          "enum": ["default", "velvet_tease", "cafe_maid", "cozy", "nightwear", "cyber", "hoodie", "pajamas", "evening", "spring_blossom"]
+        },
+        "accessory": {
+          "type": "string",
+          "description": "Selected character wearable accessory.",
+          "enum": ["none", "glasses", "headphones", "ribbon", "star_clips"]
+        },
+        "nightWhisperMode": {
+          "type": "boolean",
+          "description": "Ultra-dim ambient night mode toggle."
+        },
+        "ambientSoundscape": {
+          "type": "string",
+          "description": "Selected procedural ambient soundscape.",
+          "enum": ["off", "rain", "whitenoise"]
+        },
+        "ambientVolume": {
+          "type": "number",
+          "description": "Ambient soundscape volume between 0 and 1."
+        },
+        "totalSessions": {
+          "type": "integer",
+          "description": "Total completed or started voice sessions."
+        },
+        "totalMinutes": {
+          "type": "number",
+          "description": "Total conversation minutes across sessions."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server last-updated timestamp."
+        }
+      },
+      "required": [
+        "uid",
+        "displayName",
+        "email",
+        "onboardingCompleted",
+        "preferredMode",
+        "nightWhisperMode",
+        "ambientSoundscape",
+        "ambientVolume",
+        "totalSessions",
+        "totalMinutes",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "UserMemory": {
+      "title": "UserMemory",
+      "description": "Personal fact, preference, reminder, or goal saved automatically by Luna or manually by the user.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "content": {
+          "type": "string",
+          "description": "Memory text content.",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "category": {
+          "type": "string",
+          "description": "Memory classification.",
+          "enum": ["preference", "fact", "reminder", "goal"]
+        },
+        "source": {
+          "type": "string",
+          "description": "Whether saved via live voice tool calling or manual entry.",
+          "enum": ["voice", "manual"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server last-updated timestamp."
+        }
+      },
+      "required": ["uid", "content", "category", "source", "createdAt", "updatedAt"]
+    },
+    "VoiceSession": {
+      "title": "VoiceSession",
+      "description": "Voice conversation session metadata and duration tracking.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "mode": {
+          "type": "string",
+          "description": "Companion mode used during the session.",
+          "enum": ["wife", "tsundere", "companion"]
+        },
+        "status": {
+          "type": "string",
+          "description": "Session lifecycle state.",
+          "enum": ["active", "ended"]
+        },
+        "durationSeconds": {
+          "type": "integer",
+          "description": "Elapsed session duration in seconds."
+        },
+        "messageCount": {
+          "type": "integer",
+          "description": "Number of spoken/typed turns during the session."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server start timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server last-updated timestamp."
+        }
+      },
+      "required": ["uid", "mode", "status", "durationSeconds", "messageCount", "createdAt", "updatedAt"]
+    },
+    "ActionCanvas": {
+      "title": "ActionCanvas",
+      "description": "Structured Markdown artifact generated by Luna via Smart Action Canvas.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "title": {
+          "type": "string",
+          "description": "Canvas artifact title.",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "kind": {
+          "type": "string",
+          "description": "Structured artifact category.",
+          "enum": ["todo", "summary", "email", "notes", "other"]
+        },
+        "markdown": {
+          "type": "string",
+          "description": "Markdown body content.",
+          "minLength": 1,
+          "maxLength": 16000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server last-updated timestamp."
+        }
+      },
+      "required": ["uid", "title", "kind", "markdown", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Owner-isolated user profile, personalization, onboarding state, and usage counters."
+    },
+    "/users/{userId}/memories/{memoryId}": {
+      "schema": { "$ref": "#/entities/UserMemory" },
+      "description": "Owner-isolated personal memories saved by Luna or the user."
+    },
+    "/users/{userId}/sessions/{sessionId}": {
+      "schema": { "$ref": "#/entities/VoiceSession" },
+      "description": "Owner-isolated live voice session logs and duration telemetry."
+    },
+    "/users/{userId}/canvases/{canvasId}": {
+      "schema": { "$ref": "#/entities/ActionCanvas" },
+      "description": "Owner-isolated Smart Action Canvas Markdown documents."
+    }
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Owner-isolated user profile, companion mode preference, and session stats.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the user.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Verified user email address (strictly owner-only PII).",
+          "minLength": 3,
+          "maxLength": 254
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User preferred name.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "companionMode": {
+          "type": "string",
+          "description": "Preferred Akane persona tone.",
+          "enum": ["companion", "tsundere", "wife"]
+        },
+        "totalSessions": {
+          "type": "integer",
+          "description": "Number of completed/started sessions."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp."
+        }
+      },
+      "required": [
+        "uid",
+        "email",
+        "displayName",
+        "companionMode",
+        "totalSessions",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "MemoryV2Item": {
+      "title": "MemoryV2Item",
+      "description": "Memory v2 item in Firestore: fact, preference, event, or open_loop with importance ranking.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "kind": {
+          "type": "string",
+          "description": "Memory classification.",
+          "enum": ["fact", "preference", "event", "open_loop"]
+        },
+        "content": {
+          "type": "string",
+          "description": "Concise memory summary.",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "dueAt": {
+          "type": "string",
+          "description": "Optional timing label or ISO date for events (e.g. exam Thursday).",
+          "maxLength": 120
+        },
+        "importance": {
+          "type": "integer",
+          "description": "Ranking score 1..10 for top-10 session injection."
+        },
+        "resolved": {
+          "type": "boolean",
+          "description": "Whether an event or open_loop has been resolved/followed up."
+        },
+        "source": {
+          "type": "string",
+          "description": "How this memory was created.",
+          "enum": ["voice", "chat", "manual"]
+        },
+        "lastMentionedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of last natural follow-up."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp."
+        }
+      },
+      "required": [
+        "uid",
+        "kind",
+        "content",
+        "importance",
+        "resolved",
+        "source",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "SessionSummary": {
+      "title": "SessionSummary",
+      "description": "Short summary saved at the end of a conversation session.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "summary": {
+          "type": "string",
+          "description": "Short 1-3 sentence summary of the session.",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "turnCount": {
+          "type": "integer",
+          "description": "Number of conversation turns in the session."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp."
+        }
+      },
+      "required": ["uid", "summary", "turnCount", "createdAt", "updatedAt"]
+    },
+    "UserTask": {
+      "title": "UserTask",
+      "description": "User task created manually or via add_task tool.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "title": {
+          "type": "string",
+          "description": "Task title.",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional short description.",
+          "maxLength": 1000
+        },
+        "priority": {
+          "type": "string",
+          "description": "Task priority.",
+          "enum": ["low", "medium", "high"]
+        },
+        "status": {
+          "type": "string",
+          "description": "Task completion state.",
+          "enum": ["pending", "completed"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp."
+        }
+      },
+      "required": [
+        "uid",
+        "title",
+        "description",
+        "priority",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Owner-isolated user profile and session count."
+    },
+    "/users/{userId}/memories/{memoryId}": {
+      "schema": { "$ref": "#/entities/MemoryV2Item" },
+      "description": "Owner-isolated Memory v2 items (facts, preferences, events, open loops)."
+    },
+    "/users/{userId}/sessionSummaries/{summaryId}": {
+      "schema": { "$ref": "#/entities/SessionSummary" },
+      "description": "Owner-isolated short session summaries written at session end."
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": { "$ref": "#/entities/UserTask" },
+      "description": "Owner-isolated user tasks/missions synced with add_task and get_tasks."
+    }
+  }
+}

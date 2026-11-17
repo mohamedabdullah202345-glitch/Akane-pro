@@ -1,0 +1,265 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Safety Net: Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Global Hardened Primitives ---
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerified() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(userId) {
+      return isVerified() && userId == request.auth.uid;
+    }
+
+    function hasValidParentUser(userId) {
+      return exists(/databases/$(database)/documents/users/$(userId)) &&
+        get(/databases/$(database)/documents/users/$(userId)).data.uid == request.auth.uid;
+    }
+
+    // --- Validation Blueprints ---
+    function isValidMode(mode) {
+      return mode is string && mode in ['wife', 'tsundere', 'companion'];
+    }
+
+    function isValidSoundscape(soundscape) {
+      return soundscape is string && soundscape in ['off', 'rain', 'whitenoise'];
+    }
+
+    function isValidUserProfile(data, userId) {
+      return data.keys().hasAll([
+        'uid', 'displayName', 'email', 'onboardingCompleted', 'preferredMode',
+        'nightWhisperMode', 'ambientSoundscape', 'ambientVolume',
+        'totalSessions', 'totalMinutes', 'createdAt', 'updatedAt'
+      ]) &&
+      data.keys().hasOnly([
+        'uid', 'displayName', 'preferredNickname', 'age', 'aboutMe',
+        'email', 'photoURL', 'onboardingCompleted', 'preferredMode',
+        'sceneTheme', 'roomAtmosphere', 'timeOfDaySync', 'uiLanguage',
+        'outfitStyle', 'accessory',
+        'nightWhisperMode', 'ambientSoundscape', 'ambientVolume',
+        'totalSessions', 'totalMinutes', 'createdAt', 'updatedAt'
+      ]) &&
+      data.uid is string && data.uid == request.auth.uid && data.uid == userId &&
+      data.uid.size() >= 1 && data.uid.size() <= 128 && data.uid.matches('^[a-zA-Z0-9_\\-]+$') &&
+      data.displayName is string && data.displayName.size() >= 1 && data.displayName.size() <= 100 &&
+      (!('preferredNickname' in data) || (data.preferredNickname is string && data.preferredNickname.size() <= 200)) &&
+      (!('age' in data) || (data.age is string && data.age.size() <= 20)) &&
+      (!('aboutMe' in data) || (data.aboutMe is string && data.aboutMe.size() <= 400)) &&
+      data.email is string && data.email.size() >= 3 && data.email.size() <= 254 &&
+      (!('photoURL' in data) || (data.photoURL is string && data.photoURL.size() <= 1024)) &&
+      data.onboardingCompleted is bool &&
+      isValidMode(data.preferredMode) &&
+      (!('sceneTheme' in data) || (data.sceneTheme is string && data.sceneTheme in ['aurora', 'rainy_window', 'cafe', 'starry_sky', 'cyber_tokyo'])) &&
+      (!('roomAtmosphere' in data) || (data.roomAtmosphere is string && data.roomAtmosphere in ['none', 'candlelight', 'blossom', 'sunrise', 'moonlight'])) &&
+      (!('timeOfDaySync' in data) || data.timeOfDaySync is bool) &&
+      (!('uiLanguage' in data) || (data.uiLanguage is string && data.uiLanguage in ['en', 'ar'])) &&
+      (!('outfitStyle' in data) || (data.outfitStyle is string && data.outfitStyle in ['default', 'velvet_tease', 'cafe_maid', 'cozy', 'nightwear', 'cyber', 'hoodie', 'pajamas', 'evening', 'spring_blossom'])) &&
+      (!('accessory' in data) || (data.accessory is string && data.accessory in ['none', 'glasses', 'headphones', 'ribbon', 'star_clips'])) &&
+      data.nightWhisperMode is bool &&
+      isValidSoundscape(data.ambientSoundscape) &&
+      (data.ambientVolume is int || data.ambientVolume is float) &&
+      data.ambientVolume >= 0 && data.ambientVolume <= 1 &&
+      data.totalSessions is int && data.totalSessions >= 0 && data.totalSessions <= 1000000 &&
+      (data.totalMinutes is int || data.totalMinutes is float) &&
+      data.totalMinutes >= 0 && data.totalMinutes <= 10000000 &&
+      data.createdAt is timestamp &&
+      data.updatedAt is timestamp;
+    }
+
+    function isValidMemory(data, userId) {
+      return data.keys().hasAll(['uid', 'content', 'category', 'source', 'createdAt', 'updatedAt']) &&
+      data.keys().hasOnly(['uid', 'content', 'category', 'source', 'createdAt', 'updatedAt']) &&
+      data.uid is string && data.uid == request.auth.uid && data.uid == userId &&
+      data.uid.size() >= 1 && data.uid.size() <= 128 && data.uid.matches('^[a-zA-Z0-9_\\-]+$') &&
+      data.content is string && data.content.size() >= 1 && data.content.size() <= 1000 &&
+      data.category is string && data.category in ['preference', 'fact', 'reminder', 'goal'] &&
+      data.source is string && data.source in ['voice', 'manual'] &&
+      data.createdAt is timestamp &&
+      data.updatedAt is timestamp;
+    }
+
+    function isValidSession(data, userId) {
+      return data.keys().hasAll(['uid', 'mode', 'status', 'durationSeconds', 'messageCount', 'createdAt', 'updatedAt']) &&
+      data.keys().hasOnly(['uid', 'mode', 'status', 'durationSeconds', 'messageCount', 'createdAt', 'updatedAt']) &&
+      data.uid is string && data.uid == request.auth.uid && data.uid == userId &&
+      data.uid.size() >= 1 && data.uid.size() <= 128 && data.uid.matches('^[a-zA-Z0-9_\\-]+$') &&
+      isValidMode(data.mode) &&
+      data.status is string && data.status in ['active', 'ended'] &&
+      data.durationSeconds is int && data.durationSeconds >= 0 && data.durationSeconds <= 86400 &&
+      data.messageCount is int && data.messageCount >= 0 && data.messageCount <= 10000 &&
+      data.createdAt is timestamp &&
+      data.updatedAt is timestamp;
+    }
+
+    function isValidCanvas(data, userId) {
+      return data.keys().hasAll(['uid', 'title', 'kind', 'markdown', 'createdAt', 'updatedAt']) &&
+      data.keys().hasOnly(['uid', 'title', 'kind', 'markdown', 'createdAt', 'updatedAt']) &&
+      data.uid is string && data.uid == request.auth.uid && data.uid == userId &&
+      data.uid.size() >= 1 && data.uid.size() <= 128 && data.uid.matches('^[a-zA-Z0-9_\\-]+$') &&
+      data.title is string && data.title.size() >= 1 && data.title.size() <= 160 &&
+      data.kind is string && data.kind in ['todo', 'summary', 'email', 'notes', 'other'] &&
+      data.markdown is string && data.markdown.size() >= 1 && data.markdown.size() <= 16000 &&
+      data.createdAt is timestamp &&
+      data.updatedAt is timestamp;
+    }
+
+    // --- Collection Rules ---
+    match /users/{userId} {
+      // Strictly owner-only PII read; blanket list on /users is denied
+      allow get: if isValidId(userId) && isOwner(userId);
+
+      allow create: if isSignedIn() &&
+        isVerified() &&
+        isValidId(userId) &&
+        isValidUserProfile(incoming(), userId) &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time &&
+        incoming().totalSessions == 0 &&
+        incoming().totalMinutes == 0;
+
+      allow update: if isSignedIn() &&
+        isVerified() &&
+        isValidId(userId) &&
+        isValidUserProfile(incoming(), userId) &&
+        userId == request.auth.uid &&
+        incoming().uid == existing().uid &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time && (
+          // Action: Complete onboarding (with optional personalization fields)
+          (incoming().diff(existing()).affectedKeys().hasOnly([
+            'onboardingCompleted', 'displayName', 'preferredNickname', 'age', 'aboutMe', 'preferredMode', 'updatedAt'
+          ]) && incoming().onboardingCompleted == true) ||
+          // Action: Update preferences, profile & settings
+          (incoming().diff(existing()).affectedKeys().hasOnly([
+            'displayName', 'preferredNickname', 'age', 'aboutMe', 'photoURL',
+            'preferredMode', 'sceneTheme', 'roomAtmosphere', 'timeOfDaySync', 'uiLanguage',
+            'outfitStyle', 'accessory',
+            'nightWhisperMode', 'ambientSoundscape', 'ambientVolume', 'updatedAt'
+          ])) ||
+          // Action: Update usage counters
+          (incoming().diff(existing()).affectedKeys().hasOnly(['totalSessions', 'totalMinutes', 'updatedAt']) &&
+           incoming().totalSessions >= existing().totalSessions &&
+           incoming().totalMinutes >= existing().totalMinutes) ||
+          // Action: Reset usage counters during data clear
+          (incoming().diff(existing()).affectedKeys().hasOnly(['totalSessions', 'totalMinutes', 'updatedAt']) &&
+           incoming().totalSessions == 0 &&
+           incoming().totalMinutes == 0)
+        );
+
+      allow delete: if isValidId(userId) && isOwner(userId);
+
+      match /memories/{memoryId} {
+        allow get: if isValidId(userId) && isValidId(memoryId) && isOwner(userId) && hasValidParentUser(userId);
+        allow list: if isOwner(userId) && resource.data.uid == request.auth.uid;
+
+        allow create: if isSignedIn() &&
+          isVerified() &&
+          isValidId(userId) &&
+          isValidId(memoryId) &&
+          isValidMemory(incoming(), userId) &&
+          incoming().createdAt == request.time &&
+          incoming().updatedAt == request.time &&
+          hasValidParentUser(userId);
+
+        allow update: if isSignedIn() &&
+          isVerified() &&
+          isValidId(userId) &&
+          isValidId(memoryId) &&
+          isValidMemory(incoming(), userId) &&
+          userId == request.auth.uid &&
+          incoming().uid == existing().uid &&
+          incoming().createdAt == existing().createdAt &&
+          incoming().updatedAt == request.time &&
+          hasValidParentUser(userId) &&
+          incoming().diff(existing()).affectedKeys().hasOnly(['content', 'category', 'updatedAt']);
+
+        allow delete: if isValidId(userId) && isValidId(memoryId) && isOwner(userId) && hasValidParentUser(userId);
+      }
+
+      match /sessions/{sessionId} {
+        allow get: if isValidId(userId) && isValidId(sessionId) && isOwner(userId) && hasValidParentUser(userId);
+        allow list: if isOwner(userId) && resource.data.uid == request.auth.uid;
+
+        allow create: if isSignedIn() &&
+          isVerified() &&
+          isValidId(userId) &&
+          isValidId(sessionId) &&
+          isValidSession(incoming(), userId) &&
+          incoming().status == 'active' &&
+          incoming().durationSeconds == 0 &&
+          incoming().messageCount == 0 &&
+          incoming().createdAt == request.time &&
+          incoming().updatedAt == request.time &&
+          hasValidParentUser(userId);
+
+        allow update: if isSignedIn() &&
+          isVerified() &&
+          isValidId(userId) &&
+          isValidId(sessionId) &&
+          isValidSession(incoming(), userId) &&
+          userId == request.auth.uid &&
+          existing().status != 'ended' &&
+          incoming().uid == existing().uid &&
+          incoming().createdAt == existing().createdAt &&
+          incoming().updatedAt == request.time &&
+          hasValidParentUser(userId) && (
+            // Action: Sync live session progress
+            (incoming().diff(existing()).affectedKeys().hasOnly(['mode', 'durationSeconds', 'messageCount', 'updatedAt'])) ||
+            // Action: End session (terminal transition)
+            (incoming().diff(existing()).affectedKeys().hasOnly(['status', 'durationSeconds', 'messageCount', 'updatedAt']) &&
+             incoming().status == 'ended')
+          );
+
+        allow delete: if isValidId(userId) && isValidId(sessionId) && isOwner(userId) && hasValidParentUser(userId);
+      }
+
+      match /canvases/{canvasId} {
+        allow get: if isValidId(userId) && isValidId(canvasId) && isOwner(userId) && hasValidParentUser(userId);
+        allow list: if isOwner(userId) && resource.data.uid == request.auth.uid;
+
+        allow create: if isSignedIn() &&
+          isVerified() &&
+          isValidId(userId) &&
+          isValidId(canvasId) &&
+          isValidCanvas(incoming(), userId) &&
+          incoming().createdAt == request.time &&
+          incoming().updatedAt == request.time &&
+          hasValidParentUser(userId);
+
+        allow update: if isSignedIn() &&
+          isVerified() &&
+          isValidId(userId) &&
+          isValidId(canvasId) &&
+          isValidCanvas(incoming(), userId) &&
+          userId == request.auth.uid &&
+          incoming().uid == existing().uid &&
+          incoming().createdAt == existing().createdAt &&
+          incoming().updatedAt == request.time &&
+          hasValidParentUser(userId) &&
+          incoming().diff(existing()).affectedKeys().hasOnly(['title', 'kind', 'markdown', 'updatedAt']);
+
+        allow delete: if isValidId(userId) && isValidId(canvasId) && isOwner(userId) && hasValidParentUser(userId);
+      }
+    }
+  }
+}

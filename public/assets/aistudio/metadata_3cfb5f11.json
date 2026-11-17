@@ -1,0 +1,6 @@
+{
+  "name": "Luna - Voice Companion",
+  "description": "A calm, ambient real-time AI voice companion with live memory, smart action canvas, and personalized modes.",
+  "requestFramePermissions": ["microphone", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
